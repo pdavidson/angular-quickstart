@@ -1,11 +1,21 @@
+import './rxjs-extensions';
+
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http'
 
 import { AppComponent }   from './app.component';
+import { SmartSearch } from './smart-search/smart-search.component';
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
-  bootstrap:    [ AppComponent ]  
+  imports:      [ 
+    BrowserModule,
+    HttpModule 
+  ],
+  declarations: [ 
+    AppComponent,
+    SmartSearch 
+  ],
+  bootstrap:    [ AppComponent, SmartSearch ]  
 })
 export class AppModule { }

@@ -1,0 +1,49 @@
+{
+  "err_msg": "",
+  "ret_code": 200,
+  "data": {
+    "muscles": [
+      "Quadriceps",
+      "Chest",
+      "Glutes",
+      "Hamstrings",
+      "Lower Back",
+      "Middle Back",
+      "Lower Body",
+      "Calves",
+      "Lats",
+      "Traps",
+      "Shoulders",
+      "Upper Body",
+      "Forearms",
+      "Biceps",
+      "Triceps",
+      "Neck",
+      "Abdominals",
+      "Abductors",
+      "Adductors"
+    ],
+    "equipment": [
+      "Cable",
+      "Bands",
+      "Barbell",
+      "Body Only",
+      "Dumbbell",
+      "Medicine Ball",
+      "Foam Roll",
+      "Exercise Ball",
+      "E-Z Curl Bar",
+      "Kettlebells",
+      "Machine"
+    ],
+    "exerciseType": [
+      "Cardio",
+      "Plyometrics",
+      "Powerlifting",
+      "Olympic Weightlifting",
+      "Strength",
+      "Stretching"
+    ],
+    "maxExercisesPerMuscle": 3
+  }
+}
