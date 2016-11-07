@@ -12,8 +12,8 @@ require('./rxjs-extensions');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
-var app_component_1 = require('./app.component');
 var button_component_1 = require('./smart-search/button.component');
+var result_component_1 = require('./smart-search/result.component');
 var smart_search_component_1 = require('./smart-search/smart-search.component');
 var AppModule = (function () {
     function AppModule() {
@@ -25,11 +25,11 @@ var AppModule = (function () {
                 http_1.HttpModule
             ],
             declarations: [
-                app_component_1.AppComponent,
                 smart_search_component_1.SmartSearch,
-                button_component_1.SmartSearchButton
+                button_component_1.SmartSearchButton,
+                result_component_1.ResultComponent
             ],
-            bootstrap: [app_component_1.AppComponent, smart_search_component_1.SmartSearch]
+            bootstrap: [smart_search_component_1.SmartSearch]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

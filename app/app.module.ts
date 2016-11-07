@@ -4,8 +4,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http'
 
-import { AppComponent }   from './app.component';
 import { SmartSearchButton } from './smart-search/button.component';
+import { ResultComponent } from './smart-search/result.component';
 import { SmartSearch } from './smart-search/smart-search.component';
 
 @NgModule({
@@ -14,10 +14,10 @@ import { SmartSearch } from './smart-search/smart-search.component';
     HttpModule 
   ],
   declarations: [ 
-    AppComponent,
     SmartSearch,
-    SmartSearchButton
+    SmartSearchButton,
+    ResultComponent
   ],
-  bootstrap:    [ AppComponent, SmartSearch ]  
+  bootstrap:    [ SmartSearch ]  
 })
 export class AppModule { }

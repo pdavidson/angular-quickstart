@@ -23,6 +23,15 @@ var SmartSearchService = (function () {
             .map(function (it) { return it.data; })
             .do(function (x) { console.log('Do Next:', x); }, function (err) { console.log('Do Error:', err); }, function () { console.log('Do Completed'); });
     };
+    SmartSearchService.prototype.search = function (criteria) {
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.url, JSON.stringify(criteria), options)
+            .map(function (r) { return r; })
+            .map(function (it) { return it.json(); })
+            .map(function (it) { return it.data; })
+            .do(function (x) { console.log('Do Next:', x); }, function (err) { console.log('Do Error:', err); }, function () { console.log('Do Completed'); });
+    };
     SmartSearchService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

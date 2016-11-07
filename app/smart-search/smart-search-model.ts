@@ -5,8 +5,16 @@ export class SmartSearchCriteria {
     maxExercisesPerMuscle: number;
 }
 
-export class BBComWrapper {
+export class BBComCriteriaWrapper {
     err_msg: string;
     ret_code: number;
     data: SmartSearchCriteria
 }
+
+
+export class BBComResultWrapper {
+    err_msg: string;
+    ret_code: number;
+    data: SmartSearchResult
+}
+

@@ -3,8 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { SmartSearchService } from './smart-search.service';
-import { SmartSearchCriteria } from './smart-search-criteria';
-import { SmartSearchButton } from './button.component'
+import { SmartSearchCriteria } from './smart-search-model';
+import { SmartSearchButton } from './button.component';
+import { ResultComponent } from './result.component';
 
 @Component({ 
   selector: 'smart-search',
@@ -48,11 +49,17 @@ import { SmartSearchButton } from './button.component'
     <div class="row">
       <button type="button" class="btn btn-primary" (click)="search()">Search</button>
     </div>
+
+    <smart-search-result *ngFor="let result of results"
+      [exercise]="result">
+    </smart-search-result>
   `
 })
 export class SmartSearch implements OnInit {
   
   public criteria: SmartSearchCriteria
+  private query: SmartSearchCriteria
+  private results: Array<Object>
 
   constructor(private smartSearchService: SmartSearchService) {}  
 
@@ -61,15 +68,24 @@ export class SmartSearch implements OnInit {
       .subscribe(
         data => { 
           console.log("Got data ", data)
-          this.criteria = data          
+          this.criteria = data
+          this.query = data
           },
         err => console.error(err),
-        () => console.log('done')
+        () => console.log('done getting criteria')
       );
   }
 
   search() {
-    console.log("Clicked Search")
+    this.smartSearchService.search(this.criteria)
+      .subscribe(
+          data => { 
+            console.log("Got data ", data)
+            this.results = data;
+          },
+        err => console.error("Error Searching", err),
+        () => console.log('done searching')
+      )
   }
 
  }

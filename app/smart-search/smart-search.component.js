@@ -20,16 +20,22 @@ var SmartSearch = (function () {
             .subscribe(function (data) {
             console.log("Got data ", data);
             _this.criteria = data;
-        }, function (err) { return console.error(err); }, function () { return console.log('done'); });
+            _this.query = data;
+        }, function (err) { return console.error(err); }, function () { return console.log('done getting criteria'); });
     };
     SmartSearch.prototype.search = function () {
-        console.log("Clicked Search");
+        var _this = this;
+        this.smartSearchService.search(this.criteria)
+            .subscribe(function (data) {
+            console.log("Got data ", data);
+            _this.results = data;
+        }, function (err) { return console.error("Error Searching", err); }, function () { return console.log('done searching'); });
     };
     SmartSearch = __decorate([
         core_1.Component({
             selector: 'smart-search',
             providers: [smart_search_service_1.SmartSearchService],
-            template: "\n    \n    <div class=\"row\">\n      <h2>Muscles</h2>\n      <div class=\"btn-group\">\n        <smart-search-button *ngFor=\"let muscle of criteria?.muscles\"\n          [name]=\"'muscle'\"\n          [val]=\"muscle\">\n        </smart-search-button>              \n      </div>      \n    </div>\n\n    <div class=\"row\">\n      <h2>Equipment</h2>\n      <div class=\"btn-group\">\n          <smart-search-button *ngFor=\"let equipment of criteria?.equipment\"\n            [name]=\"'equipment'\"\n            [val]=\"equipment\">\n          </smart-search-button>              \n      </div>\n    </div>\n\n    <div class=\"row\">\n      <h2>Exercise Type</h2>\n      <div class=\"btn-group\">\n          <smart-search-button *ngFor=\"let exerciseType of criteria?.exerciseType\"\n            [name]=\"'exerciseType'\"\n            [val]=\"exerciseType\">\n          </smart-search-button>              \n      </div>\n    </div>\n    \n    <div class=\"row\">\n      <label>Show Exercises Per Muscle Group <input type=\"number\" value=\"{{criteria?.maxExercisesPerMuscle}}\"/></label>    \n    </div>\n\n    <div class=\"row\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"search()\">Search</button>\n    </div>\n  "
+            template: "\n    \n    <div class=\"row\">\n      <h2>Muscles</h2>\n      <div class=\"btn-group\">\n        <smart-search-button *ngFor=\"let muscle of criteria?.muscles\"\n          [name]=\"'muscle'\"\n          [val]=\"muscle\">\n        </smart-search-button>              \n      </div>      \n    </div>\n\n    <div class=\"row\">\n      <h2>Equipment</h2>\n      <div class=\"btn-group\">\n          <smart-search-button *ngFor=\"let equipment of criteria?.equipment\"\n            [name]=\"'equipment'\"\n            [val]=\"equipment\">\n          </smart-search-button>              \n      </div>\n    </div>\n\n    <div class=\"row\">\n      <h2>Exercise Type</h2>\n      <div class=\"btn-group\">\n          <smart-search-button *ngFor=\"let exerciseType of criteria?.exerciseType\"\n            [name]=\"'exerciseType'\"\n            [val]=\"exerciseType\">\n          </smart-search-button>              \n      </div>\n    </div>\n    \n    <div class=\"row\">\n      <label>Show Exercises Per Muscle Group <input type=\"number\" value=\"{{criteria?.maxExercisesPerMuscle}}\"/></label>    \n    </div>\n\n    <div class=\"row\">\n      <button type=\"button\" class=\"btn btn-primary\" (click)=\"search()\">Search</button>\n    </div>\n\n    <smart-search-result *ngFor=\"let result of results\"\n      [exercise]=\"result\">\n    </smart-search-result>\n  "
         }), 
         __metadata('design:paramtypes', [smart_search_service_1.SmartSearchService])
     ], SmartSearch);

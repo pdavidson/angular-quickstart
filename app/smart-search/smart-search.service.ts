@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { Http, Response, Headers, RequestOptions } from "@angular/http";
 
 import { Observable } from 'rxjs';
 
-import { BBComWrapper, SmartSearchCriteria } from './smart-search-criteria'
+import { BBComCriteriaWrapper, BBComResultWrapper, SmartSearchCriteria } from './smart-search-model'
 
 @Injectable()
 export class SmartSearchService {
@@ -16,13 +16,31 @@ export class SmartSearchService {
         return this.http.get(this.url)
                     .map((r: Response) => r)
                     .map(it => it.json())                    
-                    .map(it => it as BBComWrapper)
+                    .map(it => it as BBComCriteriaWrapper)
                     .map(it => it.data)
                     .do(
                         function (x)   { console.log('Do Next:', x); },
                         function (err) { console.log('Do Error:', err); },
                         function ()    { console.log('Do Completed'); }
-                    )
+                    )                    
     }
+
+search(criteria: SmartSearchCriteria): Observable<Array<Object>> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+
+    return this.http.post(this.url, JSON.stringify(criteria), options)
+                    .map((r: Response) => r)
+                    .map(it => it.json())
+                    .map(it => it.data)                                    
+                    .do(
+                        function (x)   { console.log('Do Next:', x); },
+                        function (err) { console.log('Do Error:', err); },
+                        function ()    { console.log('Do Completed'); }
+                    )  
 }
+
+}
+
 
