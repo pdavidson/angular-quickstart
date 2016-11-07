@@ -13,6 +13,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
+var button_component_1 = require('./smart-search/button.component');
 var smart_search_component_1 = require('./smart-search/smart-search.component');
 var AppModule = (function () {
     function AppModule() {
@@ -25,7 +26,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                smart_search_component_1.SmartSearch
+                smart_search_component_1.SmartSearch,
+                button_component_1.SmartSearchButton
             ],
             bootstrap: [app_component_1.AppComponent, smart_search_component_1.SmartSearch]
         }), 

@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http'
 
 import { AppComponent }   from './app.component';
+import { SmartSearchButton } from './smart-search/button.component';
 import { SmartSearch } from './smart-search/smart-search.component';
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SmartSearch } from './smart-search/smart-search.component';
   ],
   declarations: [ 
     AppComponent,
-    SmartSearch 
+    SmartSearch,
+    SmartSearchButton
   ],
   bootstrap:    [ AppComponent, SmartSearch ]  
 })
